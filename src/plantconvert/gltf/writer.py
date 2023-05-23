@@ -5,17 +5,8 @@ from warnings import warn
 from openalea.mtg import traversal
 import openalea.mtg.mtg as mtg
 
-# import pygltflib as gltf
-# import numpy as np
-
-# from . import utils, maths
-# from opf_io.utils import mat_from_transformed,tapering_radius_from_transformed
-
-
-
 from . import gltf
-from .. import np
-from .. import npl
+import numpy as np
 
 from .. import matrix
 from .. import binary_tools

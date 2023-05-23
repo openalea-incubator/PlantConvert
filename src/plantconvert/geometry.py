@@ -1,10 +1,7 @@
 from math import pi
 
-from . import np
-from . import npl
-
-from . import pgl
-from . import mtg
+import openalea.mtg as mtg
+import openalea.plantgl.all as pgl
 
 from .matrix import mat4_to_numpy, TRS_from_matrix4
 
@@ -19,17 +16,11 @@ from .matrix import mat4_to_numpy, TRS_from_matrix4
 
 # a class to apply tapering along x axis (in opf the tapering is along z axis)
 class taper_along_x(object):
-    """ 
-    A callable class to perform tapering along x axis
-
+    """A callable class to perform tapering along x axis
     To initialize this class with a list of reference meshes (represented by TriangleSet)
-
     If the given mesh is not in the list then it will be added
     """
-
     def __init__(self, ref_meshes=None):
-
-
         if ref_meshes is None:
             self.rotated_ref_meshes = {}
             return
@@ -54,21 +45,20 @@ class taper_along_x(object):
         return tapered
 
 def transformed_from_mat(A, geo, is_mesh = False):
-    """ Apply the transformation A (a 3 by 4 matrix) on the geometry
-    return the transformed geometry.
+    """Apply the transformation A (a 3 by 4 matrix) on the geometry
+    We perform the Qr transformation of A, so that A = Q*r where:
+        Q is a unity matrix and r is upper-triangular. To use the oriented object of plantgl, Q should have positive determinant
+        r is in our case diagonal since A is a composition of rotations and scaling
     
-    Inputs : 
-    A : a 3 by 4 numpy array that describes the transformation in the reference of the scene. This matrix is supposed to be TRS decomposible
-    geo : a geometry object from PlantGL
-    is_scaled : a boolean, if true the scaling part of A will be applied. By defaut is true. It's not used and should be kept True
-    is_mesh : a boolean, if true a new mesh (TriangleSet) will be created. Otherwise we only create a geometry object (no duplication of mesh in the memory)
+    Args:
+        A (numpy.array): a 3 by 4 numpy array that describes the transformation in the reference of the scene. This matrix is supposed to be TRS decomposible
+        geo (plantgl.Geometry): a geometry object from PlantGL
+        is_mesh (bool, optional): if true a new mesh (TriangleSet) will be created. Otherwise we only create a geometry object (no duplication of mesh in the memory). Defaults to False.
 
-    outputs :
-    Transformed geometry. if is_mesh then we get a new mesh otherwise we only create a geometry object     """
-    # return the transformed geometry object, the transformation is described by the 3 by 4 matrix A.
-    # we perform the Qr transformation of A, so that A = Q*r where:
-    # Q is a unity matrix and r is upper-triangular. To use the oriented object of plantgl, Q should have positive determinant
-    # r is in our case diagonal since A is a composition of rotations and scaling
+    Returns:
+        plantgl.Geometry: Transformed geometry. if is_mesh then we get a new mesh otherwise we only create a geometry object
+    """
+    
     if is_mesh:
         # 1. get the geometric mesh
         # 2. Create a Matrix3 or Matrix4
@@ -96,8 +86,17 @@ def transformed_from_mat(A, geo, is_mesh = False):
         return pgl.Translated(*t.tolist(), pgl.Oriented(Q[:,0],Q[:,1],pgl.Scaled(s.tolist(),geo)))
 
 def mat_from_transformed(geo):
-    """ Get the global transformation matrix from a transformed geometry 
-     """
+    """Get the global transformation matrix from a transformed geometry 
+
+    Args:
+        geo (plantgl.Geometry): a geometry object from PlantGL
+
+    Raises:
+        TypeError: if the transformation is not recognized (i.e. not a plantGL instance) 
+
+    Returns:
+        plantGL.Matrix4: transformation matrix used to obtain the transformed geometry
+    """
     
     #the identity matrix : 
     ID = pgl.Matrix4(*[pgl.Vector4([1.*(j==i) for j in range(4)]) for i in range(4)])
@@ -121,8 +120,6 @@ def mat_from_transformed(geo):
         elif isinstance(geo, pgl.Scaled):
             mat = geo.transformation().getMatrix()
             return mat * mat_from_transformed(geo.geometry)
-        else:
-            raise TypeError("input geometry's type is not recognized : %s"%(type(geo)))
     except TypeError:
         raise TypeError("input geometry's type is not recognized : %s"%(type(geo)))
 
@@ -138,8 +135,16 @@ def tapering_radius_from_transformed(geo):
         return tapering_radius_from_transformed(geo.geometry) 
 
 def get_scene(g : mtg.MTG, filter = None):
-    """
-    This method traverses the mtg g and reads the geometry property of the nodes that are allowed by the filter. It creates a plantgl Scene object of all geometric objects combined.
+    """Generates a plantGL Scene object from mtg geometry properties.
+    This method traverses the mtg g and reads the geometry property of the nodes that are allowed by the filter. 
+    It creates a plantgl Scene object of all geometric objects combined.
+
+    Args:
+        g (mtg.MTG): mtg object that contains the plant
+        filter (function, optional): takes 2 inputs: mtg.MTG and node ID and returns a bool. Defaults to None, i.e. all nodes are taken into account.
+
+    Returns:
+        plantGL.Scene: plantGL Scene object containing all geometric objects.
     """
     if filter is None:
         # if no filter given then return all the nodes

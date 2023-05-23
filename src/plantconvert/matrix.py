@@ -1,7 +1,7 @@
-from . import np
-from . import npl
+import numpy as np
+import numpy.linalg as npl
 
-from . import pgl
+import openalea.plantgl.all as pgl
 
 class TRSError(Exception):
     pass
@@ -22,13 +22,15 @@ def random_matrix4():
     return A
 
 def numpy_to_mat4(A):
-    """ Convert the 2d array A to pgl.Matrix4 object
+    """ 
+    Converts the 2d array A to pgl.Matrix4 object
     
     Input : 
-    A : a 2d numpy array. Accepted shape = 3*4, 4*4, 3*3
+        A : a 2d numpy array. Accepted shape = 3*4, 4*4, 3*3
     
     Output : 
-    Mat : the corresponding Matrix4 object. """
+        Mat : the corresponding Matrix4 object. 
+    """
 
     if not (A.shape in [(3,4),(4,4),(3,3)]):
         raise ValueError('The input\'s shape %s %s is not accepted. Must be : 3*4, 4*4 or 3*3'%(A.shape))
@@ -38,11 +40,29 @@ def numpy_to_mat4(A):
         return pgl.Matrix4(pgl.Matrix3(*A.flatten().tolist()))
 
 def mat4_to_numpy(A):
+    """ 
+    Converts the pgl.Matrix4 object to a 2d array
+    
+    Input : 
+        A : Matrix4 object.
+    
+    Output : 
+        Mat : 2d numpy array.
+    """
     return np.array([[A[i,j] for j in range(4)] for i in range(4)])
 
 def TRS_from_matrix4(A : np.ndarray):
     """
     This method return the TRS components of a TRS matrix  
+    
+    Input: 
+        A : numpy 4x4 TRS matrix
+        
+    Output:
+        t, Q, s : TRS components of the input matrix.
+            t : numpy vector of length 3
+            Q : numpy 3x3 matrix
+            s : numpy vector of length 3 
     """
     rs = A[:3,:3]
     t = A[:3,3]
@@ -74,6 +94,12 @@ def TRS_from_matrix4(A : np.ndarray):
 def inv_TRS(A : np.ndarray):
     """
     This method return the inverse of a TRS matrix.
+    
+    Input: 
+        A : numpy 4x4 TRS matrix
+    
+    Output:
+        inv : inverted matrix of A of size 4x4
     """
     t,r,s = TRS_from_matrix4(A)
     inv = np.identity(4)
@@ -90,6 +116,12 @@ def is_TRS(A : np.ndarray):
     """
     Test if the input matrix A is a 4D TRS matrix.
     This requires to test if A's linear part is the composition of a rotation and a scaling. If this is the case, the first three columns should be orthogonal. 
+    
+    Input: 
+        A : numpy 4x4 matrix
+    
+    Output:
+        bool : matrix is TRS or not
     """
 
     M = A[:3,:3].T@A[:3,:3]

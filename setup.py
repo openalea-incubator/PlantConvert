@@ -7,22 +7,22 @@ import os
 from setuptools import setup, find_packages
 
 name = 'OpenAlea.PlantConvert'
-version = '0.0.1'
 
-description = "plantconvert is a package for converting mtg into different file formats"
-long_description = open('readme.md').read()
+description = "OpenAlea.PlantConvert is an OpenAlea package to convert a plant to / from a `mtg`format to a wide range of other formats"
+readme = open('README.md').read()
+history = open('HISTORY.rst').read()
 
-authors="Shenyuan Ma"
-authors_email="mashenyuancn@gmail.com"
+# find version number in src/plantconvert/version.py
+version = {}
+with open("src/plantconvert/version.py") as fp:
+    exec(fp.read(), version)
+
+authors="Shenyuan Ma, Christophe Pradal, Thomas Arsouze, Rémi Vézy"
+authors_email="mashenyuancn@gmail.com, @pradal, @thomasarsouze, @VEZY"
 
 license = 'cecill-c'
 # dependencies to other eggs
-setup_requires = ['openalea.mtg',
-"openalea.plantgl",
-"vtk",
-"pygltflib",
-"numpy"
-]
+install_requires= ["openalea.mtg", "openalea.plantgl", "vtk", "pygltflib", "numpy"],
 
 # find packages
 packages = find_packages('src')
@@ -30,14 +30,13 @@ package_dir={'': 'src'}
 
 setup(
     name=name,
-    version=version,
-
+    version=version["__version__"],
     description=description,
-    long_description=long_description,
+    long_description=description,
     author=authors,
     author_email=authors_email,
     license=license,
-    keywords='MTG, openalea',
+    keywords='MTG, openalea, .opf, format, plantconvert',
 
     # package installation
     packages=packages,
@@ -48,7 +47,7 @@ setup(
     zip_safe=False,
 
     # Dependencies
-    setup_requires=setup_requires,
+    install_requires=install_requires,
 
     #include_package_data=True,
 

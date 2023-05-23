@@ -1,11 +1,3 @@
-> TODO : find another name of the package ...
-
-#Documentation of the format_io package
-package structure : 
-
-format_io:
-- __init__ : contains the main object `io`, to be initialized with a filename and can read the file, construct an mtg and export mtg to another format
-
 - gltf, opf, vtk : submodules where the actual implementations of reader/ writer are found, direct usage of those submodules are not recommended. It's only recommand to use the function `opf.writer.apply_scene(g, scene)` to save a scene into input mtg `g` in a manner that satisfies the `opf` writer. The user should carefully construct the scene object such that `scene.todict()` returns a dictionary with mtg vertices as keys and with corresponding meshes as values
 
 

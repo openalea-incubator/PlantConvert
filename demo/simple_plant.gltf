@@ -1,0 +1,354 @@
+{
+  "accessors": [
+    {
+      "bufferView": 0,
+      "byteOffset": 0,
+      "componentType": 5126,
+      "count": 50,
+      "normalized": false,
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 0,
+      "componentType": 5126,
+      "count": 50,
+      "max": [
+        1.0,
+        0.4990135,
+        0.5
+      ],
+      "min": [
+        0.0,
+        -0.4990135,
+        -0.4960575
+      ],
+      "normalized": false,
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 600,
+      "componentType": 5126,
+      "count": 50,
+      "normalized": false,
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 0,
+      "componentType": 5123,
+      "count": 150,
+      "normalized": false,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 3,
+      "byteOffset": 0,
+      "componentType": 5126,
+      "count": 12,
+      "normalized": false,
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 4,
+      "byteOffset": 0,
+      "componentType": 5126,
+      "count": 12,
+      "max": [
+        0.99971926,
+        0.22452335,
+        0.03067259
+      ],
+      "min": [
+        0.10162586,
+        -0.22452335,
+        -0.21470812
+      ],
+      "normalized": false,
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 4,
+      "byteOffset": 144,
+      "componentType": 5126,
+      "count": 12,
+      "normalized": false,
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 5,
+      "byteOffset": 0,
+      "componentType": 5123,
+      "count": 36,
+      "normalized": false,
+      "type": "SCALAR"
+    }
+  ],
+  "asset": {
+    "generator": "pygltflib@v1.15.3",
+    "version": "2.0"
+  },
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 400,
+      "byteOffset": 1200,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 1200,
+      "byteOffset": 0,
+      "byteStride": 12,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 300,
+      "byteOffset": 1600,
+      "target": 34963
+    },
+    {
+      "buffer": 1,
+      "byteLength": 96,
+      "byteOffset": 288,
+      "target": 34962
+    },
+    {
+      "buffer": 1,
+      "byteLength": 288,
+      "byteOffset": 0,
+      "byteStride": 12,
+      "target": 34962
+    },
+    {
+      "buffer": 1,
+      "byteLength": 72,
+      "byteOffset": 384,
+      "target": 34963
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 1900,
+      "uri": "data:application/octet-stream;base64,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"
+    },
+    {
+      "byteLength": 456,
+      "uri": "data:application/octet-stream;base64,OCHQPQ3QoLoAAACAGS60PnPpZT4VRfs8uW+1PvPiYL4VRfs80eETPxQ4cbvMP5S9A1snP3PpZb4SEdO8A1snP3PpZT4SEdO8xgtNPw3QoLpVyP29d35bP6z3DT7RgMa9Rx9cP+ttBr7RgMa9yDJrP43JG73ulCS+yDJrP4/wOT3ulCS+mu1/Pw3QoDpy3Fu+aRE2vi7Ogb7BanM/aRE2vi7Ogb7BanM/DQg4vt7trD7nhWw/aRE2vi7Ogb7BanM/sI9Dvo3Okj4JVHA/aRE2vi7Ogb7BanM/gNVdvrsIh77AoHA/gNVdvrsIh77AoHA/XBbBvhGbsj4Fo1s/XBbBvhGbsj4Fo1s/RIPJvnFkrL4g/Fo/RIPJvnFkrL4g/Fo/4Zn+PnXRxb4AAIA/AAAAAFUPMzz7PXg7pM37Pptssj4AAAAApIvuPgAAgD+ki+4+4Zn+Pl10MT/LCU8/8MFHP0aiVD4uukg/RqLUPgAAYD854Rk/AABgPw+zAD8AAIA/AAACAAQAAAAEAAMABAAIAAYABAAGAAMABgAIAAkABgAJAAsACgAHAAYACgAGAAsABwAFAAMABwADAAYAAwAFAAEAAwABAAAA"
+    }
+  ],
+  "meshes": [
+    {
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 2,
+            "POSITION": 1,
+            "TEXCOORD_0": 0
+          },
+          "indices": 3,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 6,
+            "POSITION": 5,
+            "TEXCOORD_0": 4
+          },
+          "indices": 7,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "extras": {
+        "component_roots": [
+          1
+        ],
+        "scale": 0
+      },
+      "name": "Scene"
+    },
+    {
+      "extras": {
+        "FileName": "ArchiTree",
+        "component_roots": [
+          2
+        ],
+        "scale": 1
+      },
+      "name": "Individual"
+    },
+    {
+      "extras": {
+        "component_roots": [
+          3
+        ],
+        "scale": 2
+      },
+      "name": "Axis"
+    },
+    {
+      "children": [
+        4,
+        5
+      ],
+      "extras": {
+        "Length": 0.1,
+        "Width": 0.02,
+        "base": 2.0,
+        "scale": 3,
+        "top": 2.0
+      },
+      "matrix": [
+        -4.371139e-07,
+        0.0,
+        10.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        -1.0,
+        0.0,
+        -4.371139e-08,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "mesh": 0,
+      "name": "Internode"
+    },
+    {
+      "extras": {
+        "Length": 0.2,
+        "Width": 0.1,
+        "base": 10.0,
+        "edge_type": "+",
+        "scale": 3,
+        "top": 10.0
+      },
+      "matrix": [
+        0.9999999242896459,
+        0.0,
+        -17.32050943711387,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.08660254718556935,
+        0.0,
+        0.4999999621448229,
+        0.0,
+        0.999999995628861,
+        0.0,
+        -1.0000000371138982,
+        1.0
+      ],
+      "mesh": 1,
+      "name": "Leaf"
+    },
+    {
+      "children": [
+        6
+      ],
+      "extras": {
+        "Length": 0.1,
+        "Width": 0.02,
+        "XEuler": 180.0,
+        "base": 2.0,
+        "edge_type": "<",
+        "scale": 3,
+        "top": 2.0
+      },
+      "matrix": [
+        1.0000000000000002,
+        0.0,
+        0.0,
+        0.0,
+        -2.3146419992834226e-23,
+        -1.0,
+        -8.742278000000001e-08,
+        0.0,
+        1.321185784202135e-25,
+        8.742278000000017e-08,
+        -1.0000000000000002,
+        0.0,
+        1.0000000000000002,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "mesh": 0,
+      "name": "Internode"
+    },
+    {
+      "extras": {
+        "Length": 0.2,
+        "Width": 0.1,
+        "base": 10.0,
+        "edge_type": "+",
+        "scale": 3,
+        "top": 10.0
+      },
+      "matrix": [
+        0.9999999757103507,
+        -1.0958131407565599e-13,
+        -17.320508562886115,
+        0.0,
+        -1.9106859314641964e-16,
+        1.0,
+        -8.853485709546355e-23,
+        0.0,
+        0.0866025423814181,
+        1.6547024327796313e-15,
+        0.4999999853551729,
+        0.0,
+        1.0000000043711388,
+        6.489198319357023e-15,
+        -0.9999999257721982,
+        1.0
+      ],
+      "mesh": 1,
+      "name": "Leaf"
+    }
+  ],
+  "scene": 3,
+  "scenes": [
+    {
+      "name": "Scene of scale 0",
+      "nodes": [
+        0
+      ]
+    },
+    {
+      "name": "Scene of scale 1",
+      "nodes": [
+        1
+      ]
+    },
+    {
+      "name": "Scene of scale 2",
+      "nodes": [
+        2
+      ]
+    },
+    {
+      "name": "Scene of scale 3",
+      "nodes": [
+        3
+      ]
+    }
+  ]
+}

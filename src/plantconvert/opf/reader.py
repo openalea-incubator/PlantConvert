@@ -1,16 +1,14 @@
+from xml.etree import ElementTree as ET
 from warnings import warn
 from math import isnan,sqrt
 
-from . import ET
 from .const import OPF_TYPES
 
-from .. import mtg
-from .. import pgl
+import openalea.mtg as mtg
+import openalea.plantgl.all as pgl
+
 from ..matrix import *
-
-
 from .. import geometry
-
 from .. import material
 
 
@@ -18,13 +16,17 @@ class Unknown_edge_type(Exception):
     pass
 
 def all_empty(last_indices):
-    """ Function used in read topology.
-    return True if all the stacks are empty """
+    """ 
+    Function used to read topology.
+    :Parameters:
+        - last_indices () - 
+    :Returns:
+        - True if all the stacks are empty 
+    """
     return sum((len(last_indices[k]) for k in last_indices)) == 0
 
 class Opf(object):
-    """ 
-    A read/write topological and geometrical opf format to OpenAlea (mtg and PlantGL)
+    """A read/write topological and geometrical opf format to OpenAlea (mtg and PlantGL)
 
     The object contains as properties : 
     
@@ -56,16 +58,20 @@ class Opf(object):
         
     Mtg : an openalea object that reads the topology structure of the plant. The attributes of the mtg are those read previously and geometry that is given by a shape  
     
-    Example : 
-    parser = Opf("simple_plant.opf")
-    parser.build()
-    parser.write_mtg("simple_plant.mtg")    
-    print(parser.Mtg) """
+    :Usage:
+    .. code-block:: python
+        parser = Opf("simple_plant.opf")
+        parser.build()
+        parser.write_mtg("simple_plant.mtg")    
+        print(parser.Mtg) 
+        
+    """
     
     def __init__(self,OpfPath, verbose = False):
-        """ Initialize the parser obj with :
-        OpfPath : a path to the opf file that you want to parse
-        verbose : a boolean, when it's true more information will be printed on the sreen while parsing the file. The default value is False.
+        """Initialize the parser object
+        :Parameters:
+            - OpfPath (string): path to the opf file that you want to parse
+            - verbose (bool): if True, more information will be printed on the sreen while parsing the file. The default value is False.
         
         """
         # initialize the iterator
@@ -93,7 +99,11 @@ class Opf(object):
         self.Attributes = {}
 
     def read_opf(self):
-        """ Once initialized, use this method to perform parsing. This method should be launched at most 1 time. """
+        """Once initialized, use this method to perform parsing. 
+        :Returns:
+            - `openalea.mtg` object: stored in the `Mtg` attribute of the Opf object.
+        Note: This method should be launched at most 1 time. 
+        """
 
         while not(self._event == "end" and self._element.tag == "opf"):
             self._event, self._element = self._next()
@@ -111,6 +121,11 @@ class Opf(object):
         return self.Mtg
 
     def _next(self):
+        """Access the following element of the opf iterator
+
+        Returns:
+            following element of the opf iterator
+        """
         return next(self._opf_iter)
 
     def _read_points(self,id):
@@ -228,7 +243,7 @@ class Opf(object):
             self.Materials[id]["shininess"]=self.Materials[id]["shininess"][0]
             # convert the Material to plantgl object
 
-            self.Materials[id]["plantgl_obj"] = material.toplantgl(self.Materials[id])
+            self.Materials[id]["plantgl_obj"] = material.to_plantgl(self.Materials[id])
 
             self._message("\t one material parsed")
     

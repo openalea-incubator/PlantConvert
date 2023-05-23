@@ -1,0 +1,12 @@
+name: plantconvert
+channels:
+  - openalea3
+  - conda-forge
+dependencies:
+  - python=3.9
+  - openalea.mtg
+  - openalea.plantgl
+  - numpy
+pip:
+  - vtk
+  - pygltflib

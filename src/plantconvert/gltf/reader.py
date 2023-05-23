@@ -10,9 +10,9 @@ from math import isnan
 
 from . import gltf
 from . import buffer_tools
-from .. import mtg
-from .. import pgl
-from .. import np
+import openalea.mtg.mtg as mtg
+import openalea.plantgl.all as pgl
+import numpy as np
 from ..geometry import taper_along_x, transformed_from_mat
 
 class mtg_builder(object):

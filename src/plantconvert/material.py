@@ -1,15 +1,21 @@
 from pygltflib import Material
-import vtkmodules.all as vtk
-from . import pgl
+import openalea.plantgl.all as pgl
 
-def toplantgl(material_data):
-    """ Create a plantgl object to represent a material from the input material_data.
-    The input should be a dictionary that contains exactly : 
-    An Id,
-    4 colors in RGBA : emission, ambient, diffuse and specular.
-    shininess value
+def to_plantgl(material_data):
+    """ 
+    Create a plantgl object to represent a material from the input material_data.
+    Input: 
+        material_data: 
+            dictionary that contains exactly : 
+                An `Id`
+                4 colors in RGBA : emission, ambient, diffuse and specular.
+                `shininess` value
     
-    It returns a plantgl.Material object (it's not exactly the same, some information will be lost for example, the alpha value in opf is defined for each color (emission, etc. ) while in plantgl there is only a global alpha value : transparency = 1 - alpha) """
+    Output:
+        plantgl.Material object 
+        Note: some information might be lost. For example, the alpha value in .opf is defined for each color (emission, etc. ) 
+                while in plantgl there is only a global alpha value : transparency = 1 - alpha
+    """
     #return a plantgl object : material that corresponds to the input dictionary
     if set(material_data.keys()) != {'emission','ambient','diffuse','specular','shininess'}:
         raise KeyError
@@ -30,7 +36,7 @@ def toplantgl(material_data):
         diffuse = 0.
     return pgl.Material(ambient=ambient, diffuse=diffuse, specular=specular,emission=emission,shininess=shininess,transparency = transparency)
 
-def togltf(material_data):
+def to_gltf(material_data):
     """
     Create the material information accepted by GLTF, not implemented yet
     """
