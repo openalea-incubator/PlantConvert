@@ -7,16 +7,17 @@ You can load a plant object from one format into OpenAlea, visualize it, and con
 
 .. code-block:: python
 
-  import os
-  from plantconvert.plantconvert import Plant 
-  import openalea.plantgl.all as pgl
+    import os
+    from openalea.plantconvert.plant import Plant
+    from openalea.plantconvert.geometry import get_scene
+    import openalea.plantgl.all as pgl
 
-  ext = "opf"
-  simple_plant = "%s%s.%s"%("../data/", "simple_plant", ext)
-  plant = Plant(file=simple_plant)
-  plant.read()
-  
-  scene = pc.geometry.get_scene(plant.mtg)
-  pgl.Viewer.display(scene)
+    ext = "opf"
+    simple_plant = "%s%s.%s" % ("../data/", "simple_plant", ext)
+    plant = Plant(file=simple_plant)
+    plant.read()
 
-  plant.write("simple_plant.gltf")
+    scene = get_scene(plant.mtg)
+    pgl.Viewer.display(scene)
+
+    plant.write("simple_plant.gltf")

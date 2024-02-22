@@ -28,6 +28,8 @@ export PRINT_HELP_PYSCRIPT
 
 BROWSER := python -c "$$BROWSER_PYSCRIPT"
 
+default: qa unit-tests type-check ## pytest and mypy
+
 help:
 	@python -c "$$PRINT_HELP_PYSCRIPT" < $(MAKEFILE_LIST)
 
@@ -71,9 +73,9 @@ coverage: ## check code coverage quickly with the default Python
 docs: ## generate Sphinx HTML documentation, including API docs
 	rm -f docs/plantconvert.rst
 	rm -f docs/modules.rst
-	sphinx-apidoc -o docs/ plantconvert
-	$(MAKE) -C docs clean
-	$(MAKE) -C docs html
+	sphinx-apidoc -o docs/ .
+	$(MAKE) -C . clean
+	$(MAKE) -C . html
 	$(BROWSER) docs/_build/html/index.html
 
 servedocs: docs ## compile the docs watching for changes
@@ -90,29 +92,19 @@ dist: clean ## builds source and wheel package
 install: clean ## install the package to the active Python's site-packages
 	python setup.py install
 
-default: qa unit-tests type-check
+unit-tests: ## pytest
+	python -m pytest -vv --cov=. --cov-report=$(COV_REPORT) --doctest-glob="*.md" --doctest-glob="*.rst"
 
-qa:
-        pre-commit run --all-files
+type-check: ## static type checker with mypy
+	python -m mypy .
 
-unit-tests:
-        python -m pytest -vv --cov=. --cov-report=$(COV_REPORT) --doctest-glob="*.md" --doctest-glob="*.rst"
+conda-env-update: ## update conda environment
+	$(CONDA) env update $(CONDAFLAGS) -f ci/environment-ci.yml
+	$(CONDA) env update $(CONDAFLAGS) -f environment.yml
 
-type-check:
-        python -m mypy .
+docker-build: ## build docker container with conda based on environment.yml
+	docker build -t $(PROJECT) .
 
-conda-env-update:
-        $(CONDA) env update $(CONDAFLAGS) -f ci/environment-ci.yml
-        $(CONDA) env update $(CONDAFLAGS) -f environment.yml
+docker-run: ## run previously built docker container
+	docker run --rm -ti -v $(PWD):/srv $(PROJECT)
 
-docker-build:
-        docker build -t $(PROJECT) .
-
-docker-run:
-        docker run --rm -ti -v $(PWD):/srv $(PROJECT)
-
-template-update:
-        pre-commit run --all-files cruft -c .pre-commit-config-cruft.yaml
-
-docs-build:
-        cd docs && rm -fr _api && make clean && make html

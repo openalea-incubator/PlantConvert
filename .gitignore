@@ -3,6 +3,8 @@ version.py
 
 # data
 data/
+data/DA1_Average_MAP_90.opf
+
 # Sphinx automatic generation of API
 docs/_api/
 

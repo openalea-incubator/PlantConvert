@@ -1,20 +1,23 @@
-Welcome to OpenAlea.PlantConvert's documentation!
-======================================
+Welcome to PlantConvert's documentation!
+========================================
+
+The **Plantconvert** package is a tool for seamlessly convert your plant to and from a variety of formats.
+It is an extension of the software OpenAlea.
+
+.. warning::
+
+   This project is under active development. Use with caution !!!
 
 .. toctree::
-   :maxdepth: 2
+   :hidden:
    :caption: Contents:
 
    readme
    installation
-   usage
-   modules
+   quickstart
    contributing
    authors
    history
-
-Indices and tables
-==================
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+   bugs
+   ./source/references/index.rst
+   license

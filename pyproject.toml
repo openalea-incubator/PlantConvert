@@ -1,7 +1,14 @@
 [build-system]
 requires = ["setuptools>=45", "setuptools_scm[toml]>=6.2"]
+build-backend = "setuptools.build_meta"
 
 [project]
+authors = [
+  {name = "Shenyuan Ma", email = "mashenyuancn@gmail.com"},
+  {name = "Christophe Pradal", email = "christophe.pradal@cirad.fr"},
+  {name = "Thomas Arsouze", email = "thomas.arsouze@cirad.fr"},
+  {name = "Rémi Vézy", email = "remi.vezy@cirad.fr"}
+]
 classifiers = [
   "Development Status :: 2 - Pre-Alpha",
   "Intended Audience :: Science/Research",
@@ -10,19 +17,44 @@ classifiers = [
   "Programming Language :: Python",
   "Programming Language :: Python :: 3",
   "Programming Language :: Python :: 3.9",
-  "Topic :: Scientific/Engineering"
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3 :: Only",
+  "Topic :: Scientific/Engineering",
+  "Framework :: OpenAlea"
 ]
-description = "OpenAlea.PlantConvert is an OpenAlea package to convert a plant to / from a `mtg`format to a wide range of other formats"
+dependencies = [
+  "numpy >= 1.22",
+  "openalea.mtg >= 2.2",
+  "openalea.plantgl >= 3.21",
+  "vtk >= 9.1",
+  "pygltflib >= 1.15"
+]
+description = "Convert a plant to / from a `mtg` format to a wide range of other formats"
 dynamic = ["version"]
+keywords = ["MTG", "openalea", ".opf", "format", "plantconvert"]
 license = {file = "LICENSE"}
-name = "OpenAlea.PlantConvert"
-readme = "README.md"
+name = "openalea.plantconvert"
+readme = {file = "README.md", content-type = "text/markdown"}
+
+[project.urls]
+Changelog = "https://github.com/thomasarsouze/plantconvert/blob/main/HISTORY.rst"
+Repository = "https://github.com/thomasarsouze/plantconvert"
 
 [tool.coverage.run]
 branch = true
 
 [tool.mypy]
+show_error_codes = true
 strict = false
+warn_unused_ignores = true
+
+[[tool.mypy.overrides]]
+ignore_missing_imports = true
+module = "openalea.*"
+
+[[tool.mypy.overrides]]
+ignore_missing_imports = true
+module = "vtkmodules.*"
 
 [tool.ruff]
 ignore = [
@@ -54,10 +86,14 @@ select = [
 ]
 
 [tool.setuptools]
-packages = ["plantconvert"]
+package-dir = {"" = "src"}
+zip-safe = false
+
+#[tool.setuptools.packages.find]
+#where = ["src"]
 
 [tool.setuptools_scm]
-write_to = "plantconvert/version.py"
+write_to = "src/openalea/plantconvert/version.py"
 write_to_template = '''
 # Do not change! Do not track in version control!
 __version__ = "{version}"

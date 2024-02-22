@@ -23,8 +23,6 @@ Display MTG
 The MTG of one selected plant can be displayed. The plant genotype and ID are selected,
 then the MTG is displayed. Once displayed, the MTG will be automatically refreshed when it is changed with the widgets.
 
-.. image:: ./gifs/import_mtg.gif
-
 
 2D & 3D visualization
 *******************************
@@ -43,24 +41,18 @@ Two visualization are available:
 **Note:** The visualization are zoomed on one plant, but you can dezoom to see the whole scene.
 
 
-.. image:: ./gifs/visu3d.gif
-
-
 Analyses at plant scale
 *************************
 
 Extract data
 ==============
 
-Many information can be extacted from the MTG. 
+Many information can be extacted from the MTG.
 These extraction can be done at the scale:
 
 * of the plant.
 * of the module.
 * of the node.
-
-.. image:: ./gifs/extract.gif
-
 
 
 Analyses
@@ -71,8 +63,6 @@ At the plant scale, two plot can be automatically displayed:
 * Any variable from the extracted data, function to the date.
 * The percentage representation of each stage at one data (represented in pie plot)
 
-.. image:: ./gifs/plantscale.gif
-
 
 Module scale
 ************************
@@ -82,7 +72,6 @@ Analyse single genotypes
 
 For each genotype, the occurence of successive module order is displayed:
 
-.. image:: ./gifs/modulescale_1.gif
 
 Multiple genotype analyses
 ===========================
@@ -94,19 +83,3 @@ A comparison of the genotype is automatically generated on the following criteri
 * pointwiseman of the total number of stolons
 * Relative frequency of branch crown
 * Relative frequency of extension crown
-
-
-Waffle plot
-===============
-
-.. image:: ./gifs/modulescale_3.gif
-
-
-Node Scale analyses
-*************************
-
-Waffle plot
-==============
-
-.. image:: ./gifs/nodescale_1.gif
-

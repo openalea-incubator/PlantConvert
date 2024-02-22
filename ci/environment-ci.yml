@@ -5,8 +5,8 @@ channels:
 dependencies:
 - make
 - mypy
+- data-science-types
 - myst-parser
-- pre-commit
 - pydata-sphinx-theme
 - pytest
 - pytest-cov

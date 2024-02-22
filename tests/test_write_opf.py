@@ -1,20 +1,20 @@
-import plantconvert as fio
-from const import OPFS
-import openalea.plantgl.all as pgl
+import openalea.plantconvert as pc
+
 
 def main():
-
-    # fname="coffee"
-    fname="simple_plant"
+    directory = "data"
+    fname = "simple_plant"
     # fname = "DA1_Average_MAP_90"
     ext = "opf"
-    io = fio.io(file="%s%s.%s"%(OPFS, fname, ext))
+    io = pc.io(file="%s%s.%s" % (directory, fname, ext))
     io.read()
     io.g.display()
-    io.write("%s.opf"%(fname))
+    io.write("%s.opf" % (fname))
 
-    io2 = fio.io(file="%s.%s"%(fname, ext))
+    io2 = pc.io(file="%s.%s" % (fname, ext))
     io2.read()
     io2.g.display()
+
+
 if __name__ == "__main__":
     main()
