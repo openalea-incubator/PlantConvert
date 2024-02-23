@@ -7,7 +7,7 @@ dependencies:
 - openalea.mtg
 - numpy
 - pip
-pip:
+- pip:
   - openalea.plantconvert
   - vtk
   - pygltflib
