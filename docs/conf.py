@@ -30,11 +30,13 @@ project = "plantconvert"
 copyright = "2022, Shenyuan Ma, Christophe Pradal, Thomas Arsouze, Rémi Vezy"
 author = "Shenyuan Ma, Christophe Pradal, Thomas Arsouze, Rémi Vezy"
 
-pkgver = {}
-with open(os.path.join(os.pardir, 'src', 'openalea', 'plantconvert', 'version.py')) as fp:
-    exec(fp.read(), pkgver)
+#pkgver = {}
+#with open(os.path.join(os.pardir, 'src', 'openalea', 'plantconvert', 'version.py')) as fp:
+#    exec(fp.read(), pkgver)
+from openalea.plantconvert.version import __version__
 # The short X.Y version.
-version = pkgver["__version__"]
+#version = pkgver["__version__"]
+version = __version__
 # The full version, including alpha/beta/rc tags.
 release = version
 
