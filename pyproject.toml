@@ -19,8 +19,7 @@ classifiers = [
   "Programming Language :: Python :: 3.9",
   "Programming Language :: Python :: 3.10",
   "Programming Language :: Python :: 3 :: Only",
-  "Topic :: Scientific/Engineering",
-  "Framework :: OpenAlea"
+  "Topic :: Scientific/Engineering"
 ]
 dependencies = [
   "numpy >= 1.22",
@@ -30,7 +29,7 @@ dependencies = [
   "pygltflib >= 1.15"
 ]
 description = "Convert a plant to / from a `mtg` format to a wide range of other formats"
-dynamic = ["version"]
+version = "0.1.0"
 keywords = ["MTG", "openalea", ".opf", "format", "plantconvert"]
 license = {file = "LICENSE"}
 name = "openalea.plantconvert"
@@ -92,9 +91,9 @@ zip-safe = false
 #[tool.setuptools.packages.find]
 #where = ["src"]
 
-[tool.setuptools_scm]
-write_to = "src/openalea/plantconvert/version.py"
-write_to_template = '''
-# Do not change! Do not track in version control!
-__version__ = "{version}"
-'''
+#[tool.setuptools_scm]
+#write_to = "src/openalea/plantconvert/version.py"
+#write_to_template = '''
+## Do not change! Do not track in version control!
+#__version__ = "{version}"
+#'''

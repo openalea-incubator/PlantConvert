@@ -7,3 +7,11 @@ dependencies:
 - openalea.mtg
 - numpy
 - pip
+pip:
+  - openalea.plantconvert
+  - vtk
+  - pygltflib
+  - sphinx
+  - sphinx_rtd_theme
+  - nbsphinx
+  - nbsphinx_link
