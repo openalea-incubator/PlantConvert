@@ -1,4 +1,4 @@
-Introduction to OpenAlea.PlantConvert
+Introduction to PlantConvert
 -------------------------------------
 
 ``OpenAlea.PlantConvert`` is a package for converting plants in mtg
@@ -25,14 +25,14 @@ Quick Start
 MTG and its input/output into multiple formats
 ###############################################
 
-This project allows you to read and write mtg into mulitiple formats :
+This project allows you to read and write mtg into multiple formats :
 
 1. homemade .mtg and .opf file formats
 2. gltf/glb
 3. vtk/vtp
 
 If you would like to have example dataset of mtg with geometries, please
-install the conda envrionment ``strawberry.yml`` and please also install
+install the conda environment ``strawberry.yml`` and please also install
 ``pygltflib`` and ``vtk`` by pip in the new environment.
 
 For instance, there is not yet available setup tool for current package,
@@ -45,7 +45,7 @@ Python scripts that require the package. This bash script
 They are encoded in ascii and directly parsed to construct a mtg object.
 ``.mtg`` is the default file format used by ``openalea`` and it only
 allows to save geometric parameters and not meshes. The ``.opf`` is a
-historical file formats used by archimed plateform and allows to save
+historical file formats used by archimed platform and allows to save
 both the topologic and geometric information.
 
 .gltf and .glb
