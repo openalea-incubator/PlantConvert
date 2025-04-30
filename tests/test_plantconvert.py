@@ -4,9 +4,10 @@ from openalea.mtg.mtg import MTG
 from openalea.plantconvert.plant import Plant
 from openalea.plantconvert.util import RESERVED_NAMES
 
+directory = os.path.join(os.path.dirname(os.path.abspath(__file__)), "../data")
+
 
 def test_read_opf():
-    directory = "data"
     fname = "simple_plant"
     ext = "opf"
     plant = Plant(file="%s/%s.%s" % (directory, fname, ext))
@@ -27,7 +28,6 @@ def test_read_opf():
     assert plant.mtg.property("materials")[0][0].shininess == 0.078125
 
 def test_read_mtg():
-    directory = "data"
     fname = "A3B4"
     ext = "mtg"
     plant = Plant(file="%s/%s.%s" % (directory, fname, ext))
@@ -39,14 +39,13 @@ def test_read_mtg():
     assert plant.mtg.nb_scales() == 3
     root = plant.mtg.root
     assert plant.mtg.nb_components(root) == 1
-    assert plant.mtg.properties().keys() == set(
-        ["edge_type", "label", "index", "XX", "YY", "ZZ", "radius", "_line"]
-    )
+    assert plant.mtg.properties().keys() == {"edge_type", "label", "index",
+                                             "XX", "YY", "ZZ", "radius",
+                                             "_line"}
     assert plant.mtg.property("radius")[25] == 0.01451191222701318
 
 
 def test_write_opf():
-    directory = "data"
     fname = "A3B4"
     ext = "mtg"
     plant = Plant(file="%s/%s.%s" % (directory, fname, ext))
@@ -63,7 +62,6 @@ def test_write_opf():
 
 
 def test_write_mtg():
-    directory = "data"
     fname = "simple_plant"
     ext = "opf"
     plant = Plant(file="%s/%s.%s" % (directory, fname, ext))
