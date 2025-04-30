@@ -32,6 +32,7 @@ name = "openalea.plantconvert"
 readme = {file = "README.md", content-type = "text/markdown"}
 
 [project.urls]
+Homepage = "https://plantconvert.readthedocs.io/"
 Changelog = "https://github.com/openalea/plantconvert/blob/main/HISTORY.rst"
 Repository = "https://github.com/openalea/plantconvert"
 "Bug Tracker" = "https://github.com/openalea/plantconvert/issues"
