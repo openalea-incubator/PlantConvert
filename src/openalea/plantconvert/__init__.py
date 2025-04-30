@@ -1,5 +1,7 @@
-from . import version
+from importlib.metadata import version, PackageNotFoundError
 
-__version__ = version.__version__
-
-from .plant import Plant, plant_from_mtg
+try:
+    __version__ = version("openalea.plantconvert")
+except PackageNotFoundError:
+    # package is not installed
+    pass

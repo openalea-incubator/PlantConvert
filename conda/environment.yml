@@ -3,10 +3,9 @@ channels:
 - openalea3
 - conda-forge
 dependencies:
-- python=3.9
+- python
 - openalea.plantgl
 - openalea.mtg
 - numpy
-- pip:
-  - vtk
-  - pygltflib
+- vtk
+- pygltflib
