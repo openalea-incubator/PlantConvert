@@ -1,5 +1,5 @@
 [build-system]
-requires = ["setuptools>=45", "setuptools_scm[toml]>=6.2"]
+requires = ["setuptools", "setuptools_scm"]
 build-backend = "setuptools.build_meta"
 
 [project]
@@ -16,84 +16,47 @@ classifiers = [
   "Operating System :: OS Independent",
   "Programming Language :: Python",
   "Programming Language :: Python :: 3",
-  "Programming Language :: Python :: 3.9",
-  "Programming Language :: Python :: 3.10",
   "Programming Language :: Python :: 3 :: Only",
   "Topic :: Scientific/Engineering"
 ]
 dependencies = [
-  "numpy >= 1.22",
-  "openalea.mtg >= 2.2",
-  "openalea.plantgl >= 3.21",
-  "vtk >= 9.1",
-  "pygltflib >= 1.15"
+  "numpy",
+  "vtk",
+  "pygltflib"
 ]
 description = "Convert a plant to / from a `mtg` format to a wide range of other formats"
-version = "0.1.0"
+dynamic = ["version"]
 keywords = ["MTG", "openalea", ".opf", "format", "plantconvert"]
 license = {file = "LICENSE"}
 name = "openalea.plantconvert"
 readme = {file = "README.md", content-type = "text/markdown"}
 
 [project.urls]
-Changelog = "https://github.com/thomasarsouze/plantconvert/blob/main/HISTORY.rst"
-Repository = "https://github.com/thomasarsouze/plantconvert"
+Homepage = "https://plantconvert.readthedocs.io/"
+Changelog = "https://github.com/openalea/plantconvert/blob/main/HISTORY.rst"
+Repository = "https://github.com/openalea/plantconvert"
+"Bug Tracker" = "https://github.com/openalea/plantconvert/issues"
 
-[tool.coverage.run]
-branch = true
 
-[tool.mypy]
-show_error_codes = true
-strict = false
-warn_unused_ignores = true
-
-[[tool.mypy.overrides]]
-ignore_missing_imports = true
-module = "openalea.*"
-
-[[tool.mypy.overrides]]
-ignore_missing_imports = true
-module = "vtkmodules.*"
-
-[tool.ruff]
-ignore = [
-  # pydocstyle: Missing Docstrings
-  "D1",
-  # pydocstyle: numpy convention
-  "D107",
-  "D203",
-  "D212",
-  "D213",
-  "D402",
-  "D413",
-  "D415",
-  "D416",
-  "D417"
+[project.optional-dependencies]
+test = [
+  "pytest",
 ]
-# Black line length is 88, but black does not format comments.
-line-length = 110
-select = [
-  # pyflakes
-  "F",
-  # pycodestyle
-  "E",
-  "W",
-  # isort
-  "I",
-  # pydocstyle
-  "D"
+doc = [
+  "pydata-sphinx-theme",
+  "myst-parser",
+  "sphinx-favicon",
+  "ipykernel",
+  "sphinx-copybutton",
+  "ipython_genutils",
+  "nbsphinx",
 ]
 
 [tool.setuptools]
 package-dir = {"" = "src"}
 zip-safe = false
 
-#[tool.setuptools.packages.find]
-#where = ["src"]
+[tool.setuptools.packages.find]
+where = ["src"]
 
-#[tool.setuptools_scm]
-#write_to = "src/openalea/plantconvert/version.py"
-#write_to_template = '''
-## Do not change! Do not track in version control!
-#__version__ = "{version}"
-#'''
+[tool.setuptools_scm]

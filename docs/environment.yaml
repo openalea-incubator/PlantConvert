@@ -5,13 +5,7 @@ channels:
 dependencies:
 - openalea.plantgl
 - openalea.mtg
-- numpy
+- oawidgets
 - pip
 - pip:
-  - openalea.plantconvert
-  - vtk
-  - pygltflib
-  - sphinx
-  - sphinx_rtd_theme
-  - nbsphinx
-  - nbsphinx_link
+  - ..[doc]

@@ -1,0 +1,48 @@
+{% set pyproject = load_file_data('../pyproject.toml', from_recipe_dir=True) %}
+
+package:
+  name: {{ pyproject["project"]["name"] }}
+  version: {{ GIT_DESCRIBE_TAG | replace("v", "")}}
+
+source:
+  path: ..
+
+build:
+  noarch: python
+  preserve_egg_dir: True
+  script: {{ PYTHON }} -m pip install . --no-deps -vv
+
+requirements:
+  build:
+    - python
+    {% for dep in pyproject["build-system"]["requires"] %}
+    - {{ dep.lower() }}
+    {% endfor %}
+
+  run:
+    - python
+    - openalea.mtg
+    - openalea.plantgl
+    {% for dep in pyproject["project"]["dependencies"] %}
+    - {{ dep.lower() }}
+    {% endfor %}
+
+test:
+  requires:
+    {% for dep in pyproject["project"]["optional-dependencies"]["test"] %}
+    - {{ dep.lower() }}
+    {% endfor %}
+  imports:
+    - {{ pyproject["project"]["name"] }}
+  source_files:
+    - tests/test_*.py
+  commands:
+   - pytest -v
+   - pytest --nbmake
+
+about:
+  home: {{ pyproject["project"]["urls"]["Homepage"] }}
+  license: Apache-2.0
+  license-file:
+    - LICENSE
+  summary: {{ pyproject["project"]["description"] }}
