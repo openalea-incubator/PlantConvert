@@ -120,7 +120,7 @@ latex_elements = {
 }
 latex_documents = [
     (master_doc, 'plantconvert.tex', u'plantconvert Documentation',
-     u'INRA / INRIA / CIRAD', 'manual'),
+     u'INRAE / INRIA / CIRAD', 'manual'),
 ]
 
 # -- Options for manual page output ---------------------------------------
